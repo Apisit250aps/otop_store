@@ -32,6 +32,6 @@ userSchema.methods.authentication = async function (
   return await bcrypt.compare(password, this.password)
 }
 
-const User = model<IUser>("User", userSchema)
+const User = model<IUser>("users", userSchema)
 
 export default User
