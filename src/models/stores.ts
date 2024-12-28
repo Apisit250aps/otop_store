@@ -1,7 +1,7 @@
 import { ObjectId, Schema, Document, model } from "mongoose"
 
 export interface IStore extends Document {
-  id: ObjectId
+  _id: ObjectId
   userId: ObjectId
   name: string
   provinces?: string
