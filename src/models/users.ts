@@ -33,5 +33,4 @@ userSchema.methods.authentication = async function (
 }
 
 const User = model<IUser>("users", userSchema)
-
 export default User
