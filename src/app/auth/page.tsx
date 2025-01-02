@@ -1,5 +1,7 @@
 "use client"
 
+import { signIn } from "next-auth/react"
+
 export default function Auth() {
   return (
     <>
@@ -12,7 +14,12 @@ export default function Auth() {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-outline">Continue with Google</button>
+            <button
+              className="btn btn-outline"
+              onClick={() => signIn("google", { redirect: false })}
+            >
+              Continue with Google
+            </button>
           </div>
         </div>
       </div>
