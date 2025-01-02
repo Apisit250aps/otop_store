@@ -6,8 +6,7 @@ const secret = process.env.AUTH_SECRET
 export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname
   const token = await getToken({ req, secret })
-  // Get the user's session
-  console.log(token)
+  
   // Redirect logged-in users away from the auth page
   if (token && pathname === "/auth") {
     return NextResponse.redirect(new URL("/", req.url))
