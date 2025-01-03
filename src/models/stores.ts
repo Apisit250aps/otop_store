@@ -1,4 +1,4 @@
-import { ObjectId, Schema, Document, model } from "mongoose"
+import { ObjectId, Schema, Document, model, models } from "mongoose"
 
 export interface IStore extends Document {
   _id: ObjectId
@@ -26,5 +26,5 @@ const storeSchema = new Schema<IStore>(
   { timestamps: true }
 )
 
-const Store = model<IStore>("stores", storeSchema)
+const Store = models.stores || model<IStore>("stores", storeSchema);
 export default Store

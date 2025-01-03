@@ -2,13 +2,11 @@ import { auth } from "@/auth"
 import Store from "@/models/stores"
 import Navbar from "@/shared/components/navigate/Navbar"
 
-export default async function AccountLayout({
+export default async function StoreLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const session = await auth()
-  const store = await Store.find({ userId: session?.user.id })
   return (
     <>
       <div className="drawer lg:drawer-open">
@@ -25,9 +23,9 @@ export default async function AccountLayout({
                 </label>
               </>
             }
-            title={"Account"}
+            title={"Store"}
           />
-          {children}
+          <main className=" px-0 lg:px-3">{children}</main>
         </div>
         <div className="drawer-side">
           <label
@@ -38,31 +36,28 @@ export default async function AccountLayout({
           <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <li>
-              <h2 className="menu-title">Account</h2>
+              <h2 className="menu-title">Store</h2>
               <ul>
                 <li>
                   <a>Item 1</a>
                 </li>
-                <li>
-                  <a>Item 2</a>
-                </li>
-                <li>
-                  <a>Item 3</a>
-                </li>
               </ul>
             </li>
             <li>
-              <h2 className="menu-title">Store</h2>
+              <h2 className="menu-title">Products</h2>
               <ul>
-                {store ? (
-                  <li>
-                    <a href="/store">Manage</a>
-                  </li>
-                ) : (
-                  <li>
-                    <a href="/account/store">New</a>
-                  </li>
-                )}
+              <li>
+                  <a href="/store/product">
+                    <i className="bx bx-list-plus"></i>
+                    Product List
+                  </a>
+                </li>
+                <li>
+                  <a href="/store/product/input">
+                    <i className="bx bx-package"></i>
+                    Input Products
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>
